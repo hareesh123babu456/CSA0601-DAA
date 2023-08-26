@@ -1,0 +1,52 @@
+#include<stdio.h>
+int main()
+{
+	int a[100],i,n,s,j,t;
+	int key;
+	printf("enter the key value:");
+	scanf("%d",&key);
+	printf("enter the number:");
+	scanf("%d",&n);
+	printf("enter the numbers in array:");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<n;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+			if(a[i]>a[j])
+			{
+			t=a[i];
+			a[i]=a[j];
+			a[j]=t;	
+			}
+		}
+	}
+	int m=0,k=n-1;
+	int mid=(m+k)/2;
+	while(m<=k)
+	{
+		if(a[mid]<key)
+		{
+			m=mid+1;
+			mid=(m+k)/2;
+        }
+		else if(a[mid]==key)
+		{
+			printf("key found %d\n",mid+1);
+			break;
+		}
+		else
+		{
+			k=mid-1;
+			mid=(m+k)/2;
+		}
+		if(m>k)
+		{
+			printf("not found");
+			return -1;
+		}
+	}
+}
